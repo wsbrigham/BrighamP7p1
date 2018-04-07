@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="567.0" prefWidth="645.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="brighamp7.FXMLDocumentController">
+    <children>
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+      <RadioButton fx:id="rb1" layoutX="31.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleGeneratedKeyAction" selected="true" text="Use an Enigma-Generated Key" textFill="#26107c">
+         <toggleGroup>
+            <ToggleGroup fx:id="radioGroup1" />
+         </toggleGroup>
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="rb2" layoutX="31.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleEnterKeyAction" text="Enter a Key (1-50)" textFill="#26107c" toggleGroup="$radioGroup1">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></RadioButton>
+      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="644.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="menuSave" mnemonicParsing="false" onAction="#handleMenuSave" text="Save File" />
+                  <MenuItem fx:id="menuOpen" mnemonicParsing="false" onAction="#handleMenuOpenAction" text="Open File" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="About Enigma">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#handleMenuAboutAction" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Button fx:id="btnDecode" layoutX="344.0" layoutY="267.0" mnemonicParsing="false" onAction="#handleDecodeAction" text="Decode" textFill="#26107c">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Button fx:id="btnEncode" layoutX="453.0" layoutY="267.0" mnemonicParsing="false" onAction="#handleEncodeAction" text="Encode" textFill="#26107c">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Button fx:id="btnClear" layoutX="566.0" layoutY="267.0" mnemonicParsing="false" onAction="#handleClearAction" prefHeight="31.0" prefWidth="69.0" text="Clear" textFill="#26107c">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <TextField fx:id="txtEnigmaKey" layoutX="196.0" layoutY="294.0" prefHeight="31.0" prefWidth="73.0" promptText="Key">
+         <font>
+            <Font name="System Italic" size="15.0" />
+         </font></TextField>
+      <TextArea editable="false" layoutX="9.0" layoutY="82.0" prefHeight="159.0" prefWidth="303.0" text="To encode, enter your message in the text box below,  select either &quot;Use Enigma-Generated Key&quot; or &quot;Enter a Key (1-50)&quot; and then click the  &quot;Encode&quot; button.&#10;Selet File&gt;Save File to save your message to a file." wrapText="true">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></TextArea>
+      <TextArea editable="false" layoutX="344.0" layoutY="82.0" prefHeight="159.0" prefWidth="291.0" text="To decode, select File&gt;Open File and browse to the file that contains the coded message you want to read.&#10;Press the Decode button to see your message." wrapText="true">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></TextArea>
+      <Label layoutX="65.0" layoutY="45.0" prefHeight="17.0" prefWidth="493.0" text="Welcome to the Enigma Encoding and Decoding Machine" textFill="#26107c">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="59.0" layoutY="436.0" prefHeight="21.0" prefWidth="69.0" text="Message:" textFill="#26107c">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <Label layoutX="9.0" layoutY="475.0" prefHeight="21.0" prefWidth="132.0" text="Coded Message:" textFill="#26107c">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <Label layoutX="94.0" layoutY="517.0" prefHeight="17.0" prefWidth="33.0" text="Key:" textFill="#26107c">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <TextField fx:id="txtMessage" layoutX="128.0" layoutY="432.0" prefHeight="25.0" prefWidth="449.0" />
+      <TextField fx:id="txtCodedMessage" layoutX="128.0" layoutY="472.0" prefHeight="25.0" prefWidth="449.0" />
+      <TextField fx:id="txtKey" layoutX="128.0" layoutY="513.0" prefHeight="25.0" prefWidth="449.0" />
+      <Label layoutX="214.0" layoutY="391.0" text="Secret Message Summary" textFill="#26107c">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+    </children>
+</AnchorPane>
