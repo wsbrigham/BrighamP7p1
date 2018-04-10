@@ -22,6 +22,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -72,7 +73,7 @@ public class FXMLDocumentController implements Initializable {
 
                 inputFile.close();
                 
-                txtEnigmaKey.setText(Integer.toString(key));
+                txtKey.setText(Integer.toString(key)); //changed to use the key filed in the summary
                 txtCodedMessage.setText(codedMessage);
               
             } catch (IOException ex) {
@@ -94,7 +95,9 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void handleDecodeAction(ActionEvent event){
         enigma.setCodedMessage(txtCodedMessage.getText());
-        enigma.setKey(Integer.valueOf(txtEnigmaKey.getText()));
+        //enigma.setKey(Integer.valueOf(txtEnigmaKey.getText()));
+        enigma.setKey(Integer.valueOf(txtKey.getText()));  //need to change where the key goes
+        
         enigma.decode();
         txtMessage.setText(enigma.getMessage());
     }
@@ -121,7 +124,7 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private void handleMenuAboutAction(ActionEvent event){
-        
+
     }
     
     @FXML
