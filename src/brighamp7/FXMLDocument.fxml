@@ -50,7 +50,7 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <TextField fx:id="txtEnigmaKey" layoutX="196.0" layoutY="294.0" prefHeight="31.0" prefWidth="73.0" promptText="Key">
+      <TextField fx:id="txtEnigmaKey" layoutX="196.0" layoutY="294.0" prefHeight="31.0" prefWidth="73.0">
          <font>
             <Font name="System Italic" size="15.0" />
          </font></TextField>

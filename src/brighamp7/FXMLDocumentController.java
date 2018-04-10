@@ -6,9 +6,13 @@
 package brighamp7;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -107,7 +111,7 @@ public class FXMLDocumentController implements Initializable {
         txtMessage.setText("");
         txtCodedMessage.setText("");
         txtKey.setText("");
-        btnDecode.setDisable(true);
+        //btnDecode.setDisable(true);
     }   
     
     @FXML
@@ -118,7 +122,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void handleMenuSave(ActionEvent event){
 		
-        /*JFileChooser fileChooser = new JFileChooser();
+        JFileChooser fileChooser = new JFileChooser();
         fileChooser.setCurrentDirectory(new java.io.File("."));
         fileChooser.setDialogTitle("Save Encoded Message");
         int status = fileChooser.showSaveDialog(null);
@@ -132,14 +136,14 @@ public class FXMLDocumentController implements Initializable {
                 File selectedFile = fileChooser.getSelectedFile();
                 filename = selectedFile.getPath();  
                 outputFile = new PrintWriter(filename);
-                outputFile.println(enig.getCodedMessage());             
-                outputFile.println(key);                
+                outputFile.println(enigma.getCodedMessage());             
+                outputFile.println(enigma.getKey());                
 
                outputFile.close();
             } catch (IOException ex) {
 		Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);            
 		}
-        }*/
+        }
 
         
     }
