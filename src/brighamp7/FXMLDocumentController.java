@@ -49,8 +49,10 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
      private void handleMenuOpenAction(ActionEvent event){
-        
-	/*JFileChooser fileChooser = new JFileChooser();
+        String codedMessage;
+        int key;
+         
+	JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Open A File to be Decoded");       
         fileChooser.setCurrentDirectory(new java.io.File("."));
         String filename = "";
@@ -69,10 +71,13 @@ public class FXMLDocumentController implements Initializable {
                 
 
                 inputFile.close();
+                
+                txtEnigmaKey.setText(Integer.toString(key));
+                txtCodedMessage.setText(codedMessage);
               
             } catch (IOException ex) {
                    Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);            }
-        }*/
+        }
 
     }
      @FXML
