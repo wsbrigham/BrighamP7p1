@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package brighamp7;
 
 import java.io.File;
@@ -22,13 +18,9 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author wbrigham
- */
+
 public class FXMLDocumentController implements Initializable {
     
     @FXML private TextField txtKey;
@@ -37,17 +29,8 @@ public class FXMLDocumentController implements Initializable {
     @FXML private RadioButton rb2;
     @FXML private TextField txtEnigmaKey;
     @FXML private Button btnDecode;
-
-
-    
     private Enigma enigma = new Enigma();
     
-    //txtEnigmaKey.setVisible (false);
-
-    @FXML
-    private void handleMenuSaveAction(ActionEvent event){
-        
-    }
     
     @FXML
      private void handleMenuOpenAction(ActionEvent event){
@@ -129,7 +112,9 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private void handleMenuAboutAction(ActionEvent event){
-
+          JOptionPane.showMessageDialog(null,"Enigma Encoding & "
+            + "Decoding Machine v1.8", "Enigma Encryption Macnine", 
+            JOptionPane.PLAIN_MESSAGE);
     }
     
     @FXML
