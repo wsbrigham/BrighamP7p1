@@ -21,6 +21,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -52,35 +53,39 @@ public class FXMLDocumentController implements Initializable {
      private void handleMenuOpenAction(ActionEvent event){
         String codedMessage;
         int key;
-         
-	JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Open A File to be Decoded");       
-        fileChooser.setCurrentDirectory(new java.io.File("."));
-        String filename = "";
-      
-        int status = fileChooser.showOpenDialog(null);
-        if(status == JFileChooser.APPROVE_OPTION)
+        
+                FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(new File("."));
+        fileChooser.setTitle("Open a Coded Message and key in a File");
+        //Set extension filter
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
+                "text files (*.txt)", "*.txt");
+        fileChooser.getExtensionFilters().add(extFilter);         
+        
+        //Show the Open File Dialog
+        File file = fileChooser.showOpenDialog(null);  
+        
+        if(file != null)
         {
-            try {               //read in the coded message and other input               
-                File selectedFile = fileChooser.getSelectedFile();
-                filename = selectedFile.getPath();
+            try {
+                String filename = file.getCanonicalPath(); 
                 File myFile = new File(filename);
                 Scanner inputFile = new Scanner(myFile);
-               
-                codedMessage = inputFile.nextLine();              
-                key = inputFile.nextInt();
+        	   
+               codedMessage = inputFile.nextLine();
+               key = inputFile.nextInt();
+              // String skey = inputFile.nextLine();  
+               //key = Integer.parseInt(skey);
+               txtCodedMessage.setText(codedMessage);
+               txtKey.setText(key + "");
+               inputFile.close();
                 
-
-                inputFile.close();
-                
-                txtKey.setText(Integer.toString(key)); //changed to use the key filed in the summary
-                txtCodedMessage.setText(codedMessage);
-              
             } catch (IOException ex) {
-                   Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);            }
+                Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-
     }
+     
      @FXML
     private void handleGeneratedKeyAction(ActionEvent event){
         btnDecode.setDisable(true);
@@ -129,31 +134,39 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private void handleMenuSave(ActionEvent event){
-		
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setCurrentDirectory(new java.io.File("."));
-        fileChooser.setDialogTitle("Save Encoded Message");
-        int status = fileChooser.showSaveDialog(null);
-        String filename = "";
-
-        if(status == JFileChooser.APPROVE_OPTION)
+        
+        String codedMessage;
+        int key;
+        
+        
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(new File("."));
+        fileChooser.setTitle("Save a Coded Message in a File");
+        //Set extension filter
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
+                "text files (*.txt)", "*.txt");
+        fileChooser.getExtensionFilters().add(extFilter);         
+                //Show the Save File Dialog
+        File file = fileChooser.showSaveDialog(null); 
+        
+        if(file != null)
         {
             PrintWriter outputFile = null;
             try {
+                String filename = file.getCanonicalPath();
+                File myFile = new File(filename);
+                outputFile = new PrintWriter(myFile);
+                outputFile.println(enigma.getCodedMessage());
+                outputFile.println(enigma.getKey());               
+               
+                outputFile.close();
                 
-                File selectedFile = fileChooser.getSelectedFile();
-                filename = selectedFile.getPath();  
-                outputFile = new PrintWriter(filename);
-                outputFile.println(enigma.getCodedMessage());             
-                outputFile.println(enigma.getKey());                
-
-               outputFile.close();
             } catch (IOException ex) {
-		Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);            
-		}
-        }
+                Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }        
 
-        
+
     }
     
     @Override
