@@ -1,8 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/*******************************************************************************
+*NAME: William Brigham
+*EMAIL: wbrigham@cnm.edu
+*PROGRAM TITLE: Enigma Encoding & Decoding Machine
+*CLASS OBJECTIVE: To drive the FXMLDocumentController class
+*******************************************************************************/
 package brighamp7;
 
 import javafx.application.Application;
@@ -11,18 +12,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- *
- * @author wbrigham
- */
 public class BrighamP7 extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
+        
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-        
         Scene scene = new Scene(root);
-        
         stage.setScene(scene);
         stage.show();
     }
@@ -32,6 +28,5 @@ public class BrighamP7 extends Application {
      */
     public static void main(String[] args) {
         launch(args);
-    }
-    
+    }  
 }
